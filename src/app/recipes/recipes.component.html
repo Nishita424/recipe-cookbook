@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-md-5">
-        <app-recipe-list></app-recipe-list>
+        <app-recipe-list (recipeChose)="fetchRecipeDetails($event)">
+        </app-recipe-list>
     </div>
     <div class="col-md-7">
-        <app-recipe-details></app-recipe-details>
+        <app-recipe-details [targetRecipe]="recipeForDetails"></app-recipe-details>
     </div>
 </div>
