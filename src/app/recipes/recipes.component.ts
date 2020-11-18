@@ -7,13 +7,13 @@ import { Recipe } from '../recipes/recipe.model';
   styleUrls: ['./recipes.component.css'],
 })
 export class RecipesComponent implements OnInit {
-  recipeForDetails: Recipe;
+  recipeRequestedForDetails: Recipe;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   fetchRecipeDetails(recipe: Recipe) {
-    this.recipeForDetails = recipe;
+    this.recipeRequestedForDetails = recipe;
   }
 }
