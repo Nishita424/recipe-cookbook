@@ -1,5 +1,5 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-
+.gitignore
 # compiled output
 /dist
 /tmp
@@ -44,3 +44,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/app/basic-highlight.directive.ts
+.gitignore
