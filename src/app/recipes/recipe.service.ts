@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 
 @Injectable({
@@ -17,6 +17,8 @@ export class RecipeService {
       'https://images.pexels.com/photos/5200286/pexels-photo-5200286.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
     ),
   ];
+
+  @Output() selectedRecipe = new EventEmitter<Recipe>();
 
   getRecipes() {
     // This may allow outside components to change this array. So we will send a copy instead
