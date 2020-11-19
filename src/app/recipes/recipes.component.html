@@ -4,12 +4,13 @@
         </app-recipe-list>
     </div>
     <div class="col-md-7">
-        <app-recipe-details
+        <!-- <app-recipe-details
         *ngIf="recipeRequested; else infoText"
         [targetRecipe]="recipeRequested">
         </app-recipe-details>
         <ng-template #infoText>
             <p>Please select a recipe!</p>
-        </ng-template>
+        </ng-template> -->
+        <router-outlet></router-outlet>
     </div>
 </div>
