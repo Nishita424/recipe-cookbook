@@ -17,8 +17,8 @@ const routes: Routes = [
       { path: '', component: RecipeStartComponent },
       // Since this path is hardcoded, this should come before :id path
       { path: 'new', component: RecipeEditComponent },
-      { path: ':id', component: RecipeDetailsComponent },
       { path: ':id/edit', component: RecipeEditComponent },
+      { path: ':id', component: RecipeDetailsComponent },
     ],
   },
   { path: 'shopping-list', component: ShoppingListComponent },
