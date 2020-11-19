@@ -12,6 +12,7 @@ export class ShoppingListService {
 
   // @Output() newIngredientAdded = new EventEmitter<Ingredient>();
   newIngredientAdded = new EventEmitter<Ingredient>();
+  newIngredientsAdded = new EventEmitter<Ingredient[]>();
 
   constructor() {}
 
@@ -22,5 +23,15 @@ export class ShoppingListService {
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
     this.newIngredientAdded.emit(ingredient);
+  }
+
+  addIngredients(ingredients: Ingredient[]) {
+    // downside: we will have to emit for each ingredient
+    // ingredients.forEach((ingredient) => {
+    //   this.addIngredient(ingredient);
+    // });
+    // or bulk insert and emition
+    this.ingredients.push(...ingredients);
+    this.newIngredientsAdded.emit(this.ingredients.slice());
   }
 }
