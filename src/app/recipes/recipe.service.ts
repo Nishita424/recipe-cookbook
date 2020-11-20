@@ -1,4 +1,4 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
@@ -21,8 +21,6 @@ export class RecipeService {
       [new Ingredient('French fries', 20), new Ingredient('Fish fries', 20)]
     ),
   ];
-
-  @Output() selectedRecipe = new EventEmitter<Recipe>();
 
   getRecipes() {
     // This may allow outside components to change this array. So we will send a copy instead
