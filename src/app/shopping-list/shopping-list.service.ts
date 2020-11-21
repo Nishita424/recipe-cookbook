@@ -19,6 +19,8 @@ export class ShoppingListService {
   newIngredientAdded = new Subject<Ingredient>();
   newIngredientsAdded = new Subject<Ingredient[]>();
 
+  startedEditing = new Subject<number>();
+
   constructor() {}
 
   getIngredients() {
@@ -39,5 +41,9 @@ export class ShoppingListService {
     // or bulk insert and emition
     this.ingredients.push(...ingredients);
     this.newIngredientsAdded.next(this.ingredients.slice());
+  }
+
+  getIngredient(index: number) {
+    return this.ingredients[index];
   }
 }
