@@ -18,6 +18,7 @@ export class ShoppingListService {
   // Do not use @Output() for subject
   newIngredientAdded = new Subject<Ingredient>();
   newIngredientsAdded = new Subject<Ingredient[]>();
+  ingsAfterDeletion = new Subject<Ingredient[]>();
 
   startedEditing = new Subject<number>();
 
@@ -41,6 +42,11 @@ export class ShoppingListService {
     // or bulk insert and emition
     this.ingredients.push(...ingredients);
     this.newIngredientsAdded.next(this.ingredients.slice());
+  }
+
+  ingredientDeleted(index: number) {
+    this.ingredients.splice(index, 1);
+    this.ingsAfterDeletion.next(this.ingredients.slice());
   }
 
   updateIngredient(ingredient: Ingredient, index: number) {
