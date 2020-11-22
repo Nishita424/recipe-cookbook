@@ -7,11 +7,10 @@
             type="submit"
             class="btn btn-success"
             [disabled]="!recipeForm.valid"
-            style="margin-right: 1rem"
-          >
+            style="margin-right: 1rem">
             Save
           </button>
-          <button type="button" class="btn btn-danger">Cancel</button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
         </div>
       </div>
       <hr />
@@ -24,7 +23,7 @@
               id="name"
               class="form-control"
               formControlName="name"
-            />
+              />
           </div>
         </div>
       </div>
@@ -37,7 +36,7 @@
               id="imagePath"
               class="form-control"
               formControlName="imagePath"
-            />
+              />
           </div>
         </div>
       </div>
@@ -55,8 +54,7 @@
               id="description"
               class="form-control"
               rows="6"
-              formControlName="description"
-            ></textarea>
+              formControlName="description"></textarea>
           </div>
         </div>
       </div>
@@ -64,13 +62,9 @@
         <div class="col-xs-12" formArrayName="ingredients">
           <div
             class="row"
-            *ngFor="
-              let ingredientCtrl of getIngredientControls();
-              let i = index
-            "
-            [formGroupName]="i"
-            style="margin-top: 10px"
-          >
+            *ngFor="let ingredientCtrl of getIngredientControls();
+            let i= index"[formGroupName]="i"
+            style="margin-top: 10px">
             <div class="col-xs-8">
               <input type="text" class="form-control" formControlName="name" />
             </div>
@@ -79,7 +73,7 @@
                 type="number"
                 class="form-control"
                 formControlName="amount"
-              />
+                />
             </div>
             <div class="col-xs-2">
               <button class="btn btn-danger">X</button>
@@ -93,8 +87,7 @@
           <button
             type="button"
             class="btn btn-success"
-            (click)="onAddIngredient()"
-          >
+            (click)="onAddIngredient()">
             Add ingredient
           </button>
         </div>
