@@ -2,8 +2,7 @@
   routerLinkActive="active"
   [routerLink]="[id]"
   class="list-group-item clearfix"
-  style="cursor: pointer; margin-bottom: 1rem"
->
+  style="cursor: pointer; margin-bottom: 1rem">
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
     <p class="list-group-item-text">{{ recipe.description }}</p>
@@ -13,7 +12,7 @@
       [src]="recipe.imagePath"
       alt="{{ recipe.name }}"
       class="img-responsive"
-      style="max-height: 50px"
-    />
+      style="max-height: 7rem; width: 11rem;"
+      />
   </span>
 </a>

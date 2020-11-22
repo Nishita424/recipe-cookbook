@@ -36,7 +36,13 @@
               id="imagePath"
               class="form-control"
               formControlName="imagePath"
+              #imgPath
               />
+            <div class="row">
+              <div class="col-xs-12">
+                <img [src]="imgPath.value" class="img-responsive" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -63,7 +69,7 @@
           <div
             class="row"
             *ngFor="let ingredientCtrl of getIngredientControls();
-            let i= index"[formGroupName]="i"
+            let i= index" [formGroupName]="i"
             style="margin-top: 10px">
             <div class="col-xs-8">
               <input type="text" class="form-control" formControlName="name" />
