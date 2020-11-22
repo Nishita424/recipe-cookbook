@@ -19,6 +19,10 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.recipes = this.recipeService.getRecipes();
+
+    this.recipeService.recipesChanged.subscribe((recipes) => {
+      this.recipes = recipes;
+    });
   }
 
   // This is programmatic way or do this directly with routerLink="new"
