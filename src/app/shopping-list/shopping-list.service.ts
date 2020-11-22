@@ -10,6 +10,7 @@ export class ShoppingListService {
   private ingredients: Ingredient[] = [
     new Ingredient('Morvaldio', 5),
     new Ingredient('Taurian', 10),
+    new Ingredient('Coriander', 30),
   ];
 
   // @Output() newIngredientAdded = new EventEmitter<Ingredient>();

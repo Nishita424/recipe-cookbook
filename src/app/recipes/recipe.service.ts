@@ -13,16 +13,22 @@ export class RecipeService {
 
   private recipes: Recipe[] = [
     new Recipe(
-      'A test recipe',
-      'This is simply a test description',
-      'https://images.pexels.com/photos/5200286/pexels-photo-5200286.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      [new Ingredient('Meat', 1), new Ingredient('Fish', 2)]
+      'Cheese Burger',
+      'King size burger with extra cheese and spice',
+      'https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+      [new Ingredient('Chicken', 2), new Ingredient('Tomatoes', 4)]
     ),
     new Recipe(
-      'A test2 recipe',
-      'This is another test description',
-      'https://images.pexels.com/photos/5200286/pexels-photo-5200286.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      [new Ingredient('French fries', 20), new Ingredient('Fish fries', 20)]
+      'French Fries',
+      'Trendy french fries',
+      'https://images.pexels.com/photos/1893555/pexels-photo-1893555.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+      [new Ingredient('Potatoes', 10), new Ingredient('Tomato sauce', 7)]
+    ),
+    new Recipe(
+      'Mushroom Pasta',
+      'Cheesy veg pasta with white sauce',
+      'https://images.pexels.com/photos/1438672/pexels-photo-1438672.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+      [new Ingredient('Mushroom', 10), new Ingredient('Raw pasta', 20)]
     ),
   ];
 
