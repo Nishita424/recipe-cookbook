@@ -29,30 +29,25 @@ export class DataStorageService {
 
   fetchRecipes() {
     // Or unsubscribe immediately instead of using take
-    return this.authService.user.pipe(
-      take(1),
-      exhaustMap((user) => {
-        return this.http.get<Recipe[]>(
-          'https://ng-recipe-cookbook-app.firebaseio.com/recipes.json',
-          {
-            params: new HttpParams().set('auth', user.token),
-          }
-        );
-      }),
-      map((recipes) => {
-        // To protect code from errors incase new recipe added do not have ingredients[]
-        // rxjs operator map
-        // Array map
-        return recipes.map((recipe) => {
-          return {
-            ...recipe,
-            ingredients: recipe.ingredients ? recipe.ingredients : [],
-          };
-        });
-      }),
-      tap((recipes) => {
-        this.recipesService.setRecipes(recipes);
-      })
-    );
+    return this.http
+      .get<Recipe[]>(
+        'https://ng-recipe-cookbook-app.firebaseio.com/recipes.json'
+      )
+      .pipe(
+        map((recipes) => {
+          // To protect code from errors incase new recipe added do not have ingredients[]
+          // rxjs operator map
+          // Array map
+          return recipes.map((recipe) => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : [],
+            };
+          });
+        }),
+        tap((recipes) => {
+          this.recipesService.setRecipes(recipes);
+        })
+      );
   }
 }
