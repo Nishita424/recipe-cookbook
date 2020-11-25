@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 
 import { AuthResponseData } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -15,7 +16,7 @@ export class AuthComponent {
   isLoading = false;
   error: string = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onToggleAuthMode() {
     this.isLoggedIn = !this.isLoggedIn;
@@ -39,8 +40,10 @@ export class AuthComponent {
 
     authObs.subscribe(
       (responseData) => {
-        console.log(responseData);
+        // console.log(responseData);
         this.isLoading = false;
+
+        this.router.navigate(['/recipes']);
       },
       (errorMessage) => {
         this.error = errorMessage;
