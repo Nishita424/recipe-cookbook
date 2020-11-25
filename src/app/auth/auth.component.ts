@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './auth.component.html',
 })
 export class AuthComponent {
-  isLoggedIn = false;
+  isLoggedIn = true;
   isLoading = false;
   error: string = null;
 
