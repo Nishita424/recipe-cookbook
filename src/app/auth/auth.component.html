@@ -11,8 +11,18 @@
                 <input type="password" id="password" class="form-control">
             </div>
             <div>
-                <button class="btn btn-primary">Sign Up</button> |
-                <button class="btn btn-primary">Switch to login</button>
+                <button
+                    class="btn btn-primary"
+                    type="submit">
+                    {{isLoggedIn ? 'Login' : 'Sign Up'}}
+                </button> |
+                <button
+                    class="btn btn-primary"
+                    type="button"
+                    (click)="onToggleAuthMode()">
+                    {{isLoggedIn ? 'Switch to Sign Up' : 'Switch
+                    to Login' }}
+                </button>
             </div>
         </form>
     </div>
