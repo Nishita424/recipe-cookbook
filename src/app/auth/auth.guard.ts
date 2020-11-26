@@ -14,6 +14,7 @@ import { map, tap, take } from 'rxjs/operators';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
+  // UrlTree is used to redirect un-auth user to specific route after denying his request
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
