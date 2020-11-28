@@ -1,11 +1,13 @@
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 
-import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
+import { Component, ComponentFactoryResolver } from '@angular/core';
+import { AlertComponent } from '../shared/alert/alert.component';
 
-import { AuthResponseData } from './auth.service';
 import { Router } from '@angular/router';
+
+import { AuthService } from './auth.service';
+import { AuthResponseData } from './auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -16,7 +18,11 @@ export class AuthComponent {
   isLoading = false;
   error: string = null;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) {}
 
   onToggleAuthMode() {
     this.isLoggedIn = !this.isLoggedIn;
@@ -47,6 +53,7 @@ export class AuthComponent {
       },
       (errorMessage) => {
         this.error = errorMessage;
+        this.showErrorAlert(errorMessage);
         this.isLoading = false;
       }
     );
@@ -56,5 +63,16 @@ export class AuthComponent {
 
   onHandleError() {
     this.error = null;
+  }
+
+  // Called whenever we have error
+  private showErrorAlert(errorMessage: string) {
+    // const alertCmp = new AlertComponent(); // Valid Js code, but angular will throw error
+    // Ng should create this component
+    // This factory will know how to create component of AlertComponent type
+    const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(
+      AlertComponent
+    );
+    // To place this component in specific place use: ViewContainerRef
   }
 }
