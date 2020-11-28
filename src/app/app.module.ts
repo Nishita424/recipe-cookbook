@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
-import { DropdownDirective } from './shared/dropdown.directive';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
 import { RecipeService } from './recipes/recipe.service';
@@ -35,7 +34,6 @@ import { RecipesModule } from './recipes/recipes.module';
     ShoppingListComponent,
     ShoppingEditComponent,
 
-    DropdownDirective,
     PlaceholderDirective,
   ],
   imports: [
