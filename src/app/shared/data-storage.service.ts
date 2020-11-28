@@ -38,12 +38,14 @@ export class DataStorageService {
           // To protect code from errors incase new recipe added do not have ingredients[]
           // rxjs operator map
           // Array map
-          return recipes.map((recipe) => {
-            return {
-              ...recipe,
-              ingredients: recipe.ingredients ? recipe.ingredients : [],
-            };
-          });
+          if (recipes) {
+            return recipes.map((recipe) => {
+              return {
+                ...recipe,
+                ingredients: recipe.ingredients ? recipe.ingredients : [],
+              };
+            });
+          }
         }),
         tap((recipes) => {
           this.recipesService.setRecipes(recipes);

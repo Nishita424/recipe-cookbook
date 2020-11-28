@@ -70,6 +70,8 @@ export class RecipeService {
   setRecipes(recipes: Recipe[]) {
     // Overriding the recipes in our app with recipes just fetched
     this.recipes = recipes;
-    this.recipesChanged.next(this.recipes.slice());
+    if (this.recipes) {
+      this.recipesChanged.next(this.recipes.slice());
+    }
   }
 }
