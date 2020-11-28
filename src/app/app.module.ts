@@ -18,10 +18,8 @@ import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AlertComponent } from './shared/alert/alert.component';
 
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-
 import { RecipesModule } from './recipes/recipes.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 @NgModule({
   declarations: [
@@ -31,9 +29,6 @@ import { RecipesModule } from './recipes/recipes.module';
     LoadingSpinnerComponent,
     AlertComponent,
 
-    ShoppingListComponent,
-    ShoppingEditComponent,
-
     PlaceholderDirective,
   ],
   imports: [
@@ -42,7 +37,9 @@ import { RecipesModule } from './recipes/recipes.module';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+
     RecipesModule,
+    ShoppingListModule,
   ],
   providers: [
     ShoppingListService,
