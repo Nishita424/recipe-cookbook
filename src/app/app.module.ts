@@ -64,5 +64,6 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
     },
   ],
   bootstrap: [AppComponent],
+  entryComponents: [AlertComponent],
 })
 export class AppModule {}

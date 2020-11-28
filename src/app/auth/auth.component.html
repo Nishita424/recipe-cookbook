@@ -13,7 +13,9 @@
         <!-- To find a place to attach new component we could use @ViewChild:
         <div #addHere></div> -->
         <!-- But it doesn't work. Angular needs an object ViewContainerRef which will give ref to the place where component should be created, 
-        also this directive has many extra features like, create a component here,.. This is what is required. So create a new directive and use it here. -->
+        also this directive has many extra features like, create a component here,clear,.. This is what is required. So create a new directive and use it here. -->
+        <ng-template appPlaceholder></ng-template>
+
         <div *ngIf="isLoading" style="text-align: center;">
             <app-loading-spinner></app-loading-spinner>
         </div>
