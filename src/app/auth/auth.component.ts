@@ -1,7 +1,12 @@
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
 
-import { Component, ComponentFactoryResolver, ViewChild } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  ViewChild,
+  OnDestroy,
+} from '@angular/core';
 import { AlertComponent } from '../shared/alert/alert.component';
 
 import { Router } from '@angular/router';
@@ -14,12 +19,13 @@ import { PlaceholderDirective } from '../shared/placeholder/placeholder.directiv
   selector: 'app-auth',
   templateUrl: './auth.component.html',
 })
-export class AuthComponent {
+export class AuthComponent implements OnDestroy {
   isLoggedIn = true;
   isLoading = false;
   error: string = null;
   @ViewChild(PlaceholderDirective, { static: false })
   alertHost: PlaceholderDirective;
+  private closeSub: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -80,6 +86,18 @@ export class AuthComponent {
     const hostViewContainerRef = this.alertHost.viewContainerRef;
     hostViewContainerRef.clear();
 
-    hostViewContainerRef.createComponent(alertCmpFactory);
+    const componentRef = hostViewContainerRef.createComponent(alertCmpFactory);
+
+    componentRef.instance.message = errorMessage;
+    this.closeSub = componentRef.instance.close.subscribe(() => {
+      this.closeSub.unsubscribe();
+      hostViewContainerRef.clear();
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.closeSub) {
+      this.closeSub.unsubscribe();
+    }
   }
 }
