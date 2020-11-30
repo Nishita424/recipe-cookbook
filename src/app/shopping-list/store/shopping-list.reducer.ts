@@ -23,5 +23,7 @@ export function shoppingListReducer(
         ...state,
         ingredients: [...state.ingredients, action.payload],
       };
+    default:
+      return state;
   }
 }
