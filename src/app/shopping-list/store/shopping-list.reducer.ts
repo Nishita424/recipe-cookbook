@@ -28,6 +28,26 @@ export function shoppingListReducer(
         ...state,
         ingredients: [...state.ingredients, ...action.payload],
       };
+    case ShoppingListActions.UPDATE_INGREDIENT:
+      const ingToEdit = state.ingredients[action.payload.index];
+      // ingToEdit.amount = action.payload.ingredient.amount; // not correct, since we should not overwrite the existing state
+      const updatedIng = {
+        ...ingToEdit,
+        ...action.payload.ingredient,
+      };
+      const updatedIngs = [...state.ingredients];
+      updatedIngs[action.payload.index] = updatedIng;
+      return {
+        ...state,
+        ingredients: updatedIngs,
+      };
+    case ShoppingListActions.DELETE_INGREDIENT:
+      const ingsAfterDeletion = [...state.ingredients];
+      ingsAfterDeletion.splice(action.payload, 1);
+      return {
+        ...state,
+        ingredients: ingsAfterDeletion,
+      };
 
     default:
       return state;
